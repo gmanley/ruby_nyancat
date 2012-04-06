@@ -1,11 +1,11 @@
 #  Copyright (c) 2011 Ben Arblaster.  All rights reserved.
 #  Copyright (c) 2011 Kevin Lange.  All rights reserved.
-# 
+#
 #  Original implementation Developed by: Kevin Lange
 #                http://github.com/klange/nyancat
 #  Ruby port by: Ben Arblaster
 #                http://github.com/andatche/ruby_nyancat
-# 
+#
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to
 #  deal with the Software without restriction, including without limitation the
@@ -21,7 +21,7 @@
 #       Lange, nor the names of its contributors may be used to endorse
 #       or promote products derived from this Software without specific prior
 #       written permission.
-# 
+#
 #  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 #  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 #  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
@@ -68,6 +68,7 @@ module NyanCat
     start_time = Time.now
     printf("\033[H\033[2J\033[?25l")
     begin
+      Process.fork { `afplay #{File.expand_path('../nyancat/nyan.mp3', __FILE__)}` }
       loop do
         frames.each do |frame|
           print frame
